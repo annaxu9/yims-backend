@@ -16,3 +16,11 @@ class College:
     @property
     def points(self):
         return self._points
+    
+    def to_dict(self):
+        return {
+            'name': self._college_name,
+            'abbreviation': self._college_abbreviation,
+            'points': self._points,
+            'matches': self._matches
+        }
