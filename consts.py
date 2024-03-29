@@ -22,7 +22,7 @@ colleges = {
     "Grace Hopper": 'GH',
     "Jonathan Edwards": 'JE',
     "Morse": 'MC',
-    "Pauli Murray": "PM",
+    "Pauli Murray": "MY",
     "Pierson": 'PC',
     "Saybrook": 'SY',
     "Silliman": 'SM',

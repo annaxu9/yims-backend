@@ -10,18 +10,24 @@ class Match:
         self._college2_pts = -1
 
     @property
-    def get_colleges(self):
+    def colleges(self):
         return (self._college1_name, self._college2_name)
     
     @property
-    def get_sport(self):
+    def sport(self):
         return self._sport_name
     
     @property
-    def get_location(self):
+    def location(self):
         return self._location
     
     @property
-    def get_date(self):
+    def date(self):
         return self._date
+    
+    @property
+    def time(self):
+        return self._start_time
+    
+
     
