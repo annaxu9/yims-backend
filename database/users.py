@@ -1,8 +1,8 @@
 import sys
 sys.path.append('/Users/annaxu/Desktop')
 
-from yims_backend.tables.UserDB import UserDB
-from yims_backend.data_acess_layer.UsersDataAccess import UsersDAO
+from yims_backend.models.UserDB import UserDB
+from yims_backend.data_access.UsersDataAccess import UsersDAO
 
 colleges = {
     "Benjamin Franklin" : 'BF', 
@@ -43,8 +43,5 @@ for person in fake_people:
     college_id = get_college_id(person["college"])
     user = UserDB(netid=person["netid"], firstname=person["firstname"], lastname=person["lastname"], college_id=college_id, role=person["role"])
     user.save()
-
-
-pr
 
 

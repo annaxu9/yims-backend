@@ -1,8 +1,8 @@
 import sys
 sys.path.append('/Users/annaxu/Desktop')
 
-from yims_backend.tables.CollegeDB import CollegeDB
-from yims_backend.tables.SportDB import SportDB
+from yims_backend.models.CollegeDB import CollegeDB
+from yims_backend.models.SportDB import SportDB
 from yims_backend.consts import colleges, fall_sports, winter_sports, spring_sports
 
 # Create colleges!
