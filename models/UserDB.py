@@ -14,7 +14,7 @@ class UserDB(Base):
     firstname = Column(String(20))
     lastname = Column(String(20))
     college_id = Column(Integer, ForeignKey('colleges.id'))
-    role = Column(String(10))  # role can be 'player', 'admin', 'ref'
+    role = Column(String(10))  # role can be 'player', 'admin', 'ref', "sec", or "president"
     points = Column(Integer, default=0)
 
     player_entries = relationship("PlayerDB", back_populates="user")

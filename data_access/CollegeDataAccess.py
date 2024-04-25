@@ -10,32 +10,25 @@ class CollegeDAO:
     @classmethod
     def get_all_colleges_alphabetical(cls):
         colleges = session.query(CollegeDB).order_by(CollegeDB.name).all()
-        return [College(college.name, college.abbreviation, college.points) for college in colleges]
+        return [College(college.id, college.name, college.abbreviation, college.points) for college in colleges]
 
     @classmethod
     def get_leaderboard(cls):
         colleges = session.query(CollegeDB).order_by(CollegeDB.points.desc()).all()
-        return [College(college.name, college.abbreviation, college.points) for college in colleges]
-    
-    @classmethod
-    def get_college_id(cls, college_name):
-        college = session.query(CollegeDB).filter_by(name=college_name).first()
-        if college:
-            return college.id
-        return None
+        return [College(college.id, college.name, college.abbreviation, college.points) for college in colleges]
     
     @classmethod
     def get_college_by_id(cls, college_id):
         college = session.query(CollegeDB).filter_by(id=college_id).first()
         if college:
-            return College(college.name, college.abbreviation, college.points)
+            return College(college.id, college.name, college.abbreviation, college.points)
         return None
 
     @classmethod
     def get_college_by_name(cls, college_name):
         college = session.query(CollegeDB).filter_by(name=college_name).first()
         if college:
-            return College(college.name, college.abbreviation, college.points)
+            return College(college.id, college.name, college.abbreviation, college.points)
         return None
 
     @classmethod

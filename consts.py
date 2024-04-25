@@ -1,16 +1,16 @@
 CURR_YEAR = 2023
 
-fall_sports = {'soccer': (11, "⚽"), 'flag football': (6, "🏈"), 'spikeball': (6, "🦔"), 
-        'cornhole': (6, "🌽"), 'pickleball': (6, "🥒"), 'ping pong': (10, "🏓")}
+fall_sports = {'Soccer': (11, "⚽"), 'Flag Football': (6, "🏈"), 'Spikeball': (6, "🦔"), 
+        'Cornhole': (6, "🌽"), 'Pickleball': (6, "🥒"), 'Ping Pong': (10, "🏓")}
 
-winter_sports = {'w-hoops': (5, "🏀"), 'm-hoops' : (5, "🏀"), 'c-hoops' : (5, "🏀"), 
-                 'dodgeball': (8, "🤾"), 'broomball': (6, "🧹")}
+winter_sports = {'W-Hoops': (5, "🏀"), 'M-Hoops' : (5, "🏀"), 'C-Hoops' : (5, "🏀"), 
+                 'Dodgeball': (8, "🤾"), 'Broomball': (6, "🧹")}
 
-spring_sports = {'indoor soccer': (5, "🥅"), 'volleyball': (6, "🏐"),  'badminton': (6, "🏸")}
+spring_sports = {'Indoor Soccer': (5, "🥅"), 'Volleyball': (6, "🏐"),  'Badminton': (6, "🏸")}
 
 sports_ids = {
-    "soccer": 1, "flag football": 2, "spikeball": 3, "cornhole": 4, "pickleball": 5, "ping pong": 6,
-    "w-hoops": 7, "m-hoops": 8, "c-hoops": 9, "dodgeball": 10, "broomball": 11, "indoor soccer": 12, "volleyball": 13, "badminton": 14
+    "Soccer": 1, "Flag Football": 2, "Spikeball": 3, "Cornhole": 4, "Pickleball": 5, "Ping Pong": 6,
+    "W-Hoops": 7, "M-Hoops": 8, "C-Hoops": 9, "Dodgeball": 10, "Broomball": 11, "Indoor Soccer": 12, "Volleyball": 13, "Badminton": 14
 }
 
 colleges = {

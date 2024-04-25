@@ -1,11 +1,16 @@
 class Sport:
-    def __init__(self, name, points_for_win, season, icon, dao=None, matches=None):
+    def __init__(self, id, name, points_for_win, season, icon, dao=None, matches=None):
+        self._id = id
         self._name = name
         self._points_for_win = points_for_win
         self._season = season
         self._icon = icon
         self._dao = dao
         self._matches = matches
+
+    @property
+    def id(self):
+        return self._id
 
     @property
     def name(self):
@@ -31,6 +36,7 @@ class Sport:
 
     def to_dict(self):
         return {
+            'id': self._id,
             'name': self._name,
             'points_for_win': self._points_for_win,
             'season': self._season,
@@ -41,3 +47,7 @@ class Sport:
     @classmethod
     def get_all_sports(cls, dao):
         return dao.get_all_sports()
+    
+    @classmethod
+    def get_sport_by_name(cls, sport_name, dao):
+        return dao.get_sport_by_name(sport_name)

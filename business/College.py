@@ -1,10 +1,15 @@
 class College:
-    def __init__(self, name, abbreviation, points, dao=None, matches=None):
+    def __init__(self, id, name, abbreviation, points, dao=None, matches=None):
+        self._college_id = id
         self._college_name = name
         self._college_abbreviation = abbreviation
         self._points = points
         self._dao = dao
         self._matches = matches
+
+    @property
+    def id(self):
+        return self._college_id
 
     @property
     def name(self):
@@ -26,10 +31,11 @@ class College:
 
     def to_dict(self):
         return {
+            'id': self._college_id,
             'name': self._college_name,
             'abbreviation': self._college_abbreviation,
             'points': self._points,
-            'matches': [match.to_dict() for match in self.matches] if self.matches else []
+            # 'matches': [match.to_dict() for match in self.matches] if self.matches else []
         }
     
     def get_college_id(self):

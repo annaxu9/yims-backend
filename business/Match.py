@@ -1,5 +1,6 @@
 class Match:
-    def __init__(self, college1, college2, sport, location, date, start_time, college1_pts=-1, college2_pts=-1, ref=None, college_dao=None, sport_dao=None, user_dao=None):
+    def __init__(self, college1, college2, sport, location, date, start_time, college1_pts=-1, college2_pts=-1,id=-1, ref=None, college_dao=None, sport_dao=None, user_dao=None):
+        self._id = id
         self._college1 = college1
         self._college2 = college2
         self._sport = sport
@@ -13,6 +14,10 @@ class Match:
         self._sport_dao = sport_dao
         self._user_dao = user_dao
 
+    @property
+    def id(self):
+        return self._id
+    
     @property
     def colleges(self):
         return (self._college1, self._college2)
@@ -39,14 +44,15 @@ class Match:
 
     def to_dict(self):
         return {
+            'id': self._id,
             'college1': self._college1.name,
             'college2': self._college2.name,
             'sport': self._sport.name,
             'location': self._location,
             'date': self._date,
-            'startTime': self._start_time,
-            'college1Points': self._college1_pts,
-            'college2Points': self._college2_pts,
+            'start_time': self._start_time,
+            'college1_pts': self._college1_pts,
+            'college2_pts': self._college2_pts,
             'ref': self._ref.netid if self._ref else None
         }
 
@@ -57,6 +63,11 @@ class Match:
     @classmethod
     def add_match(cls, dao, college1, college2, sport, location, date, start_time):
         return dao.add_match(college1, college2, sport, location, date, start_time)
+    
+    def update_match(self, college_pts1, college_pts2):
+        self._college1_pts = college_pts1
+        self._college2_pts = college_pts2
+        return self._college_dao.update_match(self, self._college1_pts, self._college2_pts)
 
     @classmethod
     def delete_match(cls, dao, match_id):
@@ -66,10 +77,10 @@ class Match:
     def get_past_unscored_matches(cls, dao):
         return dao.get_past_unscored_matches()
     
-    @classmethod
-    def from_db(cls, match_db, college_dao, sport_dao, user_dao):
-        college1 = college_dao.get_college_by_id(match_db.college_id1)
-        college2 = college_dao.get_college_by_id(match_db.college_id2)
-        sport = sport_dao.get_sport_by_id(match_db.sport_id)
-        ref = user_dao.get_user_by_net_id(match_db.ref_id)
-        return cls(college1=college1, college2=college2, sport=sport, location=match_db.location, date=match_db.date, start_time=match_db.start_time, college1_pts=match_db.college_pts1, college2_pts=match_db.college_pts2, ref=ref, college_dao=college_dao, sport_dao=sport_dao, user_dao=user_dao)
+    # @classmethod
+    # def from_db(cls, match_db, college_dao, sport_dao, user_dao):
+    #     college1 = college_dao.get_college_by_id(match_db.college_id1)
+    #     college2 = college_dao.get_college_by_id(match_db.college_id2)
+    #     sport = sport_dao.get_sport_by_id(match_db.sport_id)
+    #     ref = user_dao.get_user_by_net_id(match_db.ref_id)
+    #     return cls(college1=college1, college2=college2, sport=sport, location=match_db.location, date=match_db.date, start_time=match_db.start_time, college1_pts=match_db.college_pts1, college2_pts=match_db.college_pts2, ref=ref, college_dao=college_dao, sport_dao=sport_dao, user_dao=user_dao)

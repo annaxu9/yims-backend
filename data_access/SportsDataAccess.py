@@ -11,7 +11,7 @@ class SportsDAO:
     @classmethod
     def get_all_sports(cls):
         sports = session.query(SportDB).all()
-        return [Sport(sport.name, sport.points_for_win, sport.season, sport.icon) for sport in sports]
+        return [Sport(sport.id, sport.name, sport.points_for_win, sport.season, sport.icon) for sport in sports]
 
     @classmethod
     def get_matches_by_sport(cls, sport_name):
