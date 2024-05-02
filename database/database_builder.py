@@ -5,10 +5,10 @@ from yims_backend.models.CollegeDB import CollegeDB
 from yims_backend.models.SportDB import SportDB
 from yims_backend.consts import colleges, fall_sports, winter_sports, spring_sports
 
-# Create colleges!
-for college in colleges:
-    college_info = CollegeDB(name=college, abbreviation=colleges[college])
-    college_info.save()
+# # Create colleges!
+# for college in colleges:
+#     college_info = CollegeDB(name=college, abbreviation=colleges[college])
+#     college_info.save()
 
 # Create fall sports!
 for sport in fall_sports:

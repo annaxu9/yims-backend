@@ -15,5 +15,9 @@ class CollegeDB(Base):
     points = Column(Float, default=0.0)
 
     def save(self):
-        session.add(self)
-        session.commit()
+        try:
+            session.add(self)
+            session.commit()
+        except Exception as e:
+            session.rollback()  # Roll back in case of error
+            print(f"Error occurred: {e}")

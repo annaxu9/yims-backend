@@ -41,7 +41,7 @@ class Sport:
             'points_for_win': self._points_for_win,
             'season': self._season,
             'icon': self._icon,
-            'matches': [match.to_dict() for match in self.matches]
+            # 'matches': [match.to_dict() for match in self.matches]
         }
 
     @classmethod

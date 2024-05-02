@@ -17,8 +17,8 @@ class MatchDAO:
     @classmethod
     def is_college_available(cls, college_id, date, start_time, location=None):
         # Convert start_time to a datetime object for easier manipulation
-        start_time_obj = datetime.strptime(start_time, '%H:%M')
-        # Calculate the end time based on the duration (in hours)
+        start_time_obj = datetime.strptime(f"{date} {start_time}", '%Y-%m-%d %H:%M')
+        # Calculate the end time based on the duration (1 hour)
         end_time_obj = start_time_obj + timedelta(hours=1)
 
         # Query for matches involving the college on the given date and time range
@@ -30,10 +30,12 @@ class MatchDAO:
                 MatchDB.date == date,
                 # Check if there is any overlap in time
                 or_(
-                    # Requested start time is within an existing match's duration
-                    and_(MatchDB.start_time <= start_time, (MatchDB.start_time + func.make_interval(mins=60)) > start_time),
-                    # Requested end time is within an existing match's duration
-                    and_(MatchDB.start_time < end_time_obj.strftime('%H:%M'), (MatchDB.start_time + func.make_interval(mins=60)) > end_time_obj.strftime('%H:%M'))
+                    # Requested start time overlaps with an existing match's duration
+                    and_(MatchDB.start_time <= start_time_obj.time(),
+                        MatchDB.start_time + timedelta(hours=1) > start_time_obj.time()),
+                    # Requested end time overlaps with an existing match's duration
+                    and_(MatchDB.start_time < end_time_obj.time(),
+                        MatchDB.start_time + timedelta(hours=1) > end_time_obj.time())
                 ),
                 # Check if the location is the same (if a location is provided)
                 MatchDB.location == location if location else True

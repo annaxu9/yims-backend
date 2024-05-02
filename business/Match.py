@@ -37,6 +37,10 @@ class Match:
     @property
     def start_time(self):
         return self._start_time
+    
+    @property 
+    def is_scored(self):
+        return self._college1_pts != -1 and self._college2_pts != -1
 
     @property
     def ref(self):
@@ -77,10 +81,3 @@ class Match:
     def get_past_unscored_matches(cls, dao):
         return dao.get_past_unscored_matches()
     
-    # @classmethod
-    # def from_db(cls, match_db, college_dao, sport_dao, user_dao):
-    #     college1 = college_dao.get_college_by_id(match_db.college_id1)
-    #     college2 = college_dao.get_college_by_id(match_db.college_id2)
-    #     sport = sport_dao.get_sport_by_id(match_db.sport_id)
-    #     ref = user_dao.get_user_by_net_id(match_db.ref_id)
-    #     return cls(college1=college1, college2=college2, sport=sport, location=match_db.location, date=match_db.date, start_time=match_db.start_time, college1_pts=match_db.college_pts1, college2_pts=match_db.college_pts2, ref=ref, college_dao=college_dao, sport_dao=sport_dao, user_dao=user_dao)

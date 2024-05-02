@@ -22,6 +22,7 @@ class MatchDB(Base):
     location = Column(String(20))
     date = Column(String(10))
     start_time = Column(String(10))
+    # match_code = Column(Integer(10))
     ref_id = Column(String(10), ForeignKey('users.netid'))
 
     # Use string references for relationships to avoid circular imports

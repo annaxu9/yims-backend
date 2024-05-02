@@ -8,6 +8,13 @@ from yims_backend.business.Match import Match
 
 class CollegeDAO:
     @classmethod
+    def get_college_id(cls, college_name):
+        college = session.query(CollegeDB).filter_by(name=college_name).first()
+        if college:
+            return college.id
+        return None 
+    
+    @classmethod
     def get_all_colleges_alphabetical(cls):
         colleges = session.query(CollegeDB).order_by(CollegeDB.name).all()
         return [College(college.id, college.name, college.abbreviation, college.points) for college in colleges]
